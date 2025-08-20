@@ -335,40 +335,21 @@
     <h2 class="text-center fw-bold mb-5 text-success animate__animated animate__fadeIn">Reserva tu cita</h2>
     <div class="row justify-content-center">
       <div class="col-md-8 animate__animated animate__fadeInUp">
-        <form class="bg-light text-dark p-4 rounded shadow-lg border border-success">
-          <div class="mb-3">
-            <label for="nombre" class="form-label text-success">Nombre</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required
-              style="border-radius: 1rem;">
+        <!-- Calendly inline widget -->
+        <div class="bg-light text-dark p-4 rounded shadow-lg border border-success">
+          <div class="mb-3 text-center">
+            <p class="fs-5 mb-2">Agenda tu cita directamente en nuestro calendario:</p>
+            <!-- Principio del widget integrado de Calendly -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/niko-orozc/30min" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- Final del widget integrado de Calendly -->
           </div>
-          <div class="mb-3">
-            <label for="telefono" class="form-label text-success">Teléfono</label>
-            <input type="tel" class="form-control" id="telefono" placeholder="Tu teléfono" required
-              style="border-radius: 1rem;">
-          </div>
-          <div class="mb-3">
-            <label for="servicio" class="form-label text-success">Servicio</label>
-            <select class="form-select" id="servicio" required style="border-radius: 1rem;">
-              <option value="">Selecciona un servicio</option>
-              <option>Corte de Cabello</option>
-              <option>Barba & Afeitado</option>
-              <option>Tratamientos</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="fecha" class="form-label text-success">Fecha</label>
-            <input type="date" class="form-control" id="fecha" required style="border-radius: 1rem;">
-          </div>
-          <div class="mb-3">
-            <label for="hora" class="form-label text-success">Hora</label>
-            <input type="time" class="form-control" id="hora" required style="border-radius: 1rem;">
-          </div>
-          <button type="submit" class="btn btn-success w-100 fw-bold"
-            style="border-radius: 2rem; font-size: 1.2rem;">Reservar</button>
-        </form>
+        </div>
       </div>
     </div>
   </div>
+  <!-- Calendly script -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </section>
 <!-- CONTACTO / UBICACIÓN / MENSAJE -->
 <section id="contacto" class="py-5">
