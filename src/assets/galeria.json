@@ -1,0 +1,22 @@
+[
+  {
+    "imagen": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+    "titulo": "Corte clásico",
+    "descripcion": "Estilo tradicional con acabado premium."
+  },
+  {
+    "imagen": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+    "titulo": "Barba ecológica",
+    "descripcion": "Barba perfecta con productos naturales."
+  },
+  {
+    "imagen": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80",
+    "titulo": "Fade moderno",
+    "descripcion": "Corte fade con técnica avanzada."
+  },
+  {
+    "imagen": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80",
+    "titulo": "Estilo personalizado",
+    "descripcion": "Diseño único para cada cliente."
+  }
+]

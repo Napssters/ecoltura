@@ -1,0 +1,65 @@
+[
+  {
+    "nombre": "Experiencia VIP 🥇",
+    "duracion": "90 min",
+    "descripcion": "Corte + Asesoría de imagen + Vapor ozono + Mascarilla de puntos negros + Exfoliación + Mascarilla de colágeno + Masaje muscular",
+    "precio": "$ 60.000",
+    "foto": "vip.jpg"
+  },
+  {
+    "nombre": "Corte Platinum 🥈",
+    "duracion": "60 min",
+    "descripcion": "Corte + Asesoría de imagen + Mascarilla de puntos negros + mascarilla de ácido hialurónico.",
+    "precio": "$ 30.000",
+    "foto": "platinum.jpg"
+  },
+  {
+    "nombre": "Corte Básico 🥉",
+    "duracion": "60 min",
+    "descripcion": "Corte de cabello",
+    "precio": "$ 27.000",
+    "foto": "basico.jpg"
+  },
+  {
+    "nombre": "Corte y Barba Básico 🥉",
+    "duracion": "60 min",
+    "descripcion": "Un look completo con un corte de cabello impecable y una barba definida (Sin mascarilla).",
+    "precio": "$ 32.000",
+    "foto": "barba-basico.jpg"
+  },
+  {
+    "nombre": "Corte y Barba Platinum 🥈",
+    "duracion": "60 min",
+    "descripcion": "Corte + Barba + Asesoria + Mascarilla de puntos negros + Mascarilla de ácido hialurónico.",
+    "precio": "$ 35.000",
+    "foto": "barba-platinum.jpg"
+  },
+  {
+    "nombre": "Barba con vapor ozono",
+    "duracion": "30 min",
+    "descripcion": "Tratamiento premium para hidratar, suavizar y dar forma perfecta a tu barba.",
+    "precio": "$ 20.000",
+    "foto": "barba-ozono.jpg"
+  },
+  {
+    "nombre": "Rayos o Mechas Platinadas",
+    "duracion": "180 min",
+    "descripcion": "¿Cansado de verte siempre igual? Dale un toque moderno a tu cabello e imagen con unos rayos platinados.",
+    "precio": "Precio a partir de $ 130.000",
+    "foto": "mechas.jpg"
+  },
+  {
+    "nombre": "Ondulación o Rizados Permantes",
+    "duracion": "180 min",
+    "descripcion": "Perfecto para aquellos hombres de cabello liso que buscan un cambio de imagen que impacte.",
+    "precio": "Precio a partir de $ 130.000",
+    "foto": "rizados.jpg"
+  },
+  {
+    "nombre": "Servicio a Domicilio",
+    "duracion": "120 min",
+    "descripcion": "A cualquier parte de la ciudad de Pereira",
+    "precio": "",
+    "foto": "domicilio.jpg"
+  }
+]

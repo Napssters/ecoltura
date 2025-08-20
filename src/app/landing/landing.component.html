@@ -1,0 +1,326 @@
+<!-- HERO / PORTADA -->
+<section id="hero" class="position-relative overflow-hidden d-flex align-items-center justify-content-center"
+  style="min-height: 90vh;">
+  <img src="landing.jpg" alt="Fondo Barbería" class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index:0;">
+  <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"
+  style="background: rgba(30,40,50,0.45); z-index:1;"></div>
+  <div class="container position-relative text-center" style="z-index:2;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Barber-pole.png" alt="Ecoltura Barbería Logo"
+      class="mb-4 animate__animated animate__fadeInDown" style="width: 120px; filter: drop-shadow(0 0 10px #198754);">
+    <h1 class="display-1 fw-bold mb-3 text-white animate__animated animate__fadeInUp"
+      style="font-family: 'Montserrat', serif; text-shadow: 0 4px 24px #000a;">Ecoltura Barbería</h1>
+    <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s"
+      style="font-size: 1.7rem; text-shadow: 0 2px 8px #000a; color: #fff;">Barbería premium, estilo ecológico y moderno. Vive la experiencia, luce tu mejor versión.</p>
+    <a href="#reserva"
+  class="btn btn-success shadow-lg px-3 py-2 animate__animated animate__pulse animate__infinite d-flex align-items-center mx-auto"
+  style="font-size: 1.1rem; border-radius: 1.2rem; box-shadow: 0 2px 12px #198754; color: #fff; background: linear-gradient(90deg, #198754 0%, #43ea7c 100%); width: fit-content; min-width: unset; gap:0.4rem; text-shadow: 0 2px 8px #19875499;">
+      <i class="bi bi-leaf-fill" style="font-size: 1.2rem; color: #43ea7c;"></i>
+      <span style="padding:0 4px;">Reservas</span>
+    </a>
+  </div>
+</section>
+<!-- SOBRE NOSOTROS -->
+<section id="about" class="py-5 position-relative" style="background: #fff;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0 animate__animated animate__fadeInLeft">
+        <h2 class="fw-bold mb-3 text-success" style="font-size:2.5rem;">Sobre Nosotros</h2>
+        <p class="fs-5 text-dark">Fusionamos tradición y modernidad, cuidando el medio ambiente y tu estilo. Nuestro
+          equipo está comprometido con la excelencia y la satisfacción de cada cliente.</p>
+        <ul class="list-unstyled text-dark">
+          <li><i class="bi bi-check-circle-fill me-2 text-success"></i> Productos ecológicos</li>
+          <li><i class="bi bi-check-circle-fill me-2 text-success"></i> Técnicas modernas y clásicas</li>
+          <li><i class="bi bi-check-circle-fill me-2 text-success"></i> Ambiente premium y relajante</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center animate__animated animate__fadeInRight">
+        <div class="about-img-wrapper position-relative">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+            alt="Barbería" class="img-fluid rounded shadow-lg"
+            style="max-height: 350px; object-fit: cover; border: 6px solid #198754; filter: brightness(0.95) contrast(1.1);">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SERVICIOS -->
+<section id="servicios" class="py-5" style="background: #f8f9fa;">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 text-success animate__animated animate__fadeIn" style="font-size:2.5rem;">
+      Nuestros Servicios</h2>
+    <div class="row g-4">
+      <ng-container *ngFor="let servicio of servicios">
+        <div class="col-md-4 animate__animated animate__zoomIn">
+          <div class="card h-100 shadow-lg border-0 service-card position-relative overflow-hidden" style="background: #fff; border-radius:1.5rem;">
+            <img *ngIf="servicio.foto" [src]="'assets/' + servicio.foto" [alt]="servicio.nombre" class="card-img-top" style="height: 180px; object-fit: cover; border-bottom: 4px solid #198754;">
+            <div class="card-body d-flex flex-column justify-content-between align-items-start">
+              <h5 class="card-title text-dark mb-2 text-start">{{ servicio.nombre }}</h5>
+              <span class="badge bg-success mb-2">{{ servicio.duracion }}</span>
+              <p class="card-text text-secondary mb-2 text-start">{{ servicio.descripcion }}</p>
+              <h6 class="fw-bold text-success mb-3 text-start">{{ servicio.precio }}</h6>
+              <a href="#reserva" class="btn btn-success px-4 py-2 fw-bold align-self-start" style="border-radius: 2rem;">Reservar</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+<!-- GALERÍA -->
+<section id="galeria" class="py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 text-success animate__animated animate__fadeIn">Galería</h2>
+    <!-- Carrusel SOLO para móviles -->
+    <div *ngIf="isMobile; else desktopGallery" class="gallery-carousel-mobile">
+      <div class="d-flex justify-content-center align-items-center mb-3">
+        <button class="btn btn-outline-success me-2" (click)="prevSlide()" [disabled]="currentSlide === 0">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div class="gallery-card-snap animate__animated animate__fadeInUp position-relative w-100"
+          (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+          <div class="gallery-img-wrapper" (click)="selectedImage = galeria[currentSlide].imagen" tabindex="0">
+            <img [src]="galeria[currentSlide].imagen" [alt]="galeria[currentSlide].titulo" class="gallery-img-snap" />
+          </div>
+          <div class="glass-text mt-2">
+            <h5 class="text-light mb-2 text-center">{{ galeria[currentSlide].titulo }}</h5>
+            <p class="text-light mb-0 text-justify">{{ galeria[currentSlide].descripcion }}</p>
+          </div>
+        </div>
+        <button class="btn btn-outline-success ms-2" (click)="nextSlide()"
+          [disabled]="currentSlide === galeria.length - 1">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+      <div class="text-center mb-2">
+        <small>{{ currentSlide + 1 }} / {{ galeria.length }}</small>
+      </div>
+      <div class="lightbox" *ngIf="selectedImage" (click)="selectedImage = null">
+        <img [src]="selectedImage" alt="Imagen ampliada" class="lightbox-img" />
+      </div>
+    </div>
+    <!-- Galería normal para desktop -->
+    <ng-template #desktopGallery>
+      <div class="gallery-snap">
+        <ng-container *ngFor="let item of galeria; let i = index">
+          <div class="gallery-card-snap animate__animated animate__fadeInUp position-relative"
+            [ngClass]="{ 'align-left': i % 2 === 0, 'align-right': i % 2 === 1, 'gallery-card-lg': i % 3 === 0, 'gallery-card-md': i % 3 === 1, 'gallery-card-sm': i % 3 === 2 }">
+            <div class="gallery-img-wrapper" (click)="selectedImage = item.imagen" tabindex="0">
+              <img [src]="item.imagen" [alt]="item.titulo" class="gallery-img-snap" />
+            </div>
+            <div class="gallery-blur-base" [ngClass]="{ 'blur-right': i % 2 === 0, 'blur-left': i % 2 === 1 }">
+              <div class="glass-text" [ngClass]="{'ms-3': i % 2 === 0, 'me-3': i % 2 === 1}">
+                <h5 class="text-light mb-2" [ngClass]="{'text-start': i % 2 === 0, 'text-end': i % 2 === 1}">{{
+                  item.titulo }}</h5>
+                <p class="text-light mb-0 text-justify">{{ item.descripcion }}</p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="lightbox" *ngIf="selectedImage" (click)="selectedImage = null">
+        <img [src]="selectedImage" alt="Imagen ampliada" class="lightbox-img" />
+      </div>
+    </ng-template>
+  </div>
+</section>
+<!-- TESTIMONIOS -->
+<section id="testimonios" class="py-5" style="background: #f8f9fa;">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 text-success animate__animated animate__fadeIn">Testimonios</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-4 animate__animated animate__fadeInLeft">
+        <div class="card shadow-lg border-0" style="background: #fff;">
+          <div class="card-body">
+            <p class="fst-italic text-secondary">“El mejor corte que he tenido, ambiente increíble y atención de
+              primera.”</p>
+            <div class="d-flex align-items-center mt-3">
+              <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=400&q=80"
+                alt="Cliente 1" class="rounded-circle me-3"
+                style="width: 50px; height: 50px; object-fit: cover; border: 2px solid #198754;">
+              <div>
+                <h6 class="mb-0 text-success">Juan Pérez</h6>
+                <small class="text-secondary">Cliente frecuente</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 animate__animated animate__fadeInRight">
+        <div class="card shadow-lg border-0" style="background: #fff;">
+          <div class="card-body">
+            <p class="fst-italic text-secondary">“Productos ecológicos y resultados espectaculares. ¡Recomendado!”</p>
+            <div class="d-flex align-items-center mt-3">
+              <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80"
+                alt="Cliente 2" class="rounded-circle me-3"
+                style="width: 50px; height: 50px; object-fit: cover; border: 2px solid #198754;">
+              <div>
+                <h6 class="mb-0 text-success">Sofía Ramírez</h6>
+                <small class="text-secondary">Cliente frecuente</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- PROCESO / CÓMO FUNCIONA -->
+<section id="proceso" class="py-5 position-relative" style="background: #fff;">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 text-success animate__animated animate__fadeIn">¿Cómo funciona?</h2>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4 animate__animated animate__fadeInUp">
+        <div class="card h-100 shadow-lg border-0" style="background: #fff;">
+          <div class="card-body">
+            <i class="bi bi-calendar-check fs-1 mb-3 text-success"></i>
+            <h5 class="card-title text-dark">Reserva</h5>
+            <p class="card-text text-secondary">Agenda tu cita fácilmente en línea o por WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="card h-100 shadow-lg border-0" style="background: #fff;">
+          <div class="card-body">
+            <i class="bi bi-person-check fs-1 mb-3 text-success"></i>
+            <h5 class="card-title text-dark">Atención personalizada</h5>
+            <p class="card-text text-secondary">Elige tu barbero y recibe el mejor servicio.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 animate__animated animate__fadeInUp animate__delay-2s">
+        <div class="card h-100 shadow-lg border-0" style="background: #fff;">
+          <div class="card-body">
+            <i class="bi bi-star fs-1 mb-3 text-success"></i>
+            <h5 class="card-title text-dark">Disfruta</h5>
+            <p class="card-text text-secondary">Relájate y disfruta de la experiencia premium.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- NUESTRO EQUIPO / TRABAJADORES -->
+<section id="trabajadores" class="py-5 position-relative" style="background: #f8f9fa;">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 text-success animate__animated animate__fadeIn" style="font-size:2.5rem;">
+      Nuestro Equipo</h2>
+    <div class="row g-4 justify-content-center">
+      <ng-container *ngFor="let trabajador of trabajadores">
+        <div class="col-md-4 animate__animated animate__fadeInUp">
+          <div class="card h-100 shadow-lg border-0" style="background: #fff; border-radius:1.5rem;">
+            <img [src]="trabajador.imagen" [alt]="trabajador.nombre" class="card-img-top"
+              style="height: 250px; object-fit: cover; border-bottom: 4px solid #198754;">
+            <div class="card-body text-center">
+              <h5 class="card-title text-dark">{{ trabajador.nombre }} <small class="text-muted">{{ trabajador.alias
+                  }}</small></h5>
+              <p class="card-text text-secondary">{{ trabajador.descripcion }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+<!-- RESERVA TU CITA -->
+<section id="reserva" class="py-5 position-relative" style="background: #fff;">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 text-success animate__animated animate__fadeIn">Reserva tu cita</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8 animate__animated animate__fadeInUp">
+        <form class="bg-light text-dark p-4 rounded shadow-lg border border-success">
+          <div class="mb-3">
+            <label for="nombre" class="form-label text-success">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required
+              style="border-radius: 1rem;">
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label text-success">Teléfono</label>
+            <input type="tel" class="form-control" id="telefono" placeholder="Tu teléfono" required
+              style="border-radius: 1rem;">
+          </div>
+          <div class="mb-3">
+            <label for="servicio" class="form-label text-success">Servicio</label>
+            <select class="form-select" id="servicio" required style="border-radius: 1rem;">
+              <option value="">Selecciona un servicio</option>
+              <option>Corte de Cabello</option>
+              <option>Barba & Afeitado</option>
+              <option>Tratamientos</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="fecha" class="form-label text-success">Fecha</label>
+            <input type="date" class="form-control" id="fecha" required style="border-radius: 1rem;">
+          </div>
+          <div class="mb-3">
+            <label for="hora" class="form-label text-success">Hora</label>
+            <input type="time" class="form-control" id="hora" required style="border-radius: 1rem;">
+          </div>
+          <button type="submit" class="btn btn-success w-100 fw-bold"
+            style="border-radius: 2rem; font-size: 1.2rem;">Reservar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CONTACTO / UBICACIÓN / MENSAJE -->
+<section id="contacto" class="py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="bg-white p-0 rounded shadow text-dark border border-success" style="overflow:hidden;">
+          <div class="d-flex flex-row h-100" style="min-height:350px;">
+            <div class="flex-grow-1 d-flex flex-column justify-content-center p-4">
+              <h2 class="fw-bold mb-3 text-success"><i class="bi bi-person-lines-fill me-2"></i>Contacto</h2>
+              <ul class="list-unstyled mb-4">
+                <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i> +57 310 8977205</li>
+                <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i> contacto&#64;ecolturabarberia.com</li>
+                <li class="mb-2"><i class="bi bi-clock-fill me-2"></i> Lun-Dom: 8am - 8pm</li>
+                <li class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i> Cra. 12a #8-09, Pereira, Risaralda</li>
+              </ul>
+            </div>
+            <div class="d-flex align-items-center justify-content-center contact-icons-bg" style="width:50%; min-height:350px; height:100%; border-radius:0;">
+              <div class="row w-100 g-3 justify-content-center align-items-center">
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                  <a href="https://wa.me/573108977205" target="_blank">
+                    <i class="bi bi-whatsapp fs-1" style="color:#43ea7c;"></i>
+                  </a>
+                </div>
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                  <a href="https://www.facebook.com/people/Ecoltura-Barber%C3%ADa/61555951635437/" target="_blank">
+                    <i class="bi bi-facebook fs-1" style="color:#1877f2;"></i>
+                  </a>
+                </div>
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                  <a href="https://www.instagram.com/ecolturabarberia/" target="_blank">
+                    <i class="bi bi-instagram fs-1" style="color:#E1306C;"></i>
+                  </a>
+                </div>
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                  <a href="https://www.tiktok.com/@ecoltura.barberia" target="_blank">
+                    <i class="bi bi-tiktok fs-1" style="color:#fff;"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 d-flex align-items-center" style="min-height:350px;">
+        <div class="bg-white p-4 rounded shadow border border-success w-100" style="height:350px; display:flex; flex-direction:column; justify-content:center;">
+          <h3 class="fw-bold mb-3 text-success"><i class="bi bi-geo-alt-fill me-2"></i>Ubicación</h3>
+          <div class="ratio ratio-16x9 rounded shadow" style="height:220px;">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d591.00263251645!2d-75.68599756409898!3d4.808488423823473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3887d56ed9c0db%3A0x5fb992b0c5593c8d!2sEcoltura%20Barber%C3%ADa!5e0!3m2!1ses-419!2sco!4v1755644539626!5m2!1ses-419!2sco&output=embed"
+              style="border:0; border-radius:1rem; width:100%; height:100%;" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer class="py-4">
+  <div class="container text-center">
+    <small>© 2025 Ecoltura Barbería. Todos los derechos reservados.</small>
+  </div>
+</footer>
